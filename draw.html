@@ -75,13 +75,12 @@
                         previewImageUrl: rep.data.link
                     }]).then(function () {
                         //window.alert("Message sent");
+                        liff.closeWindow();
                     }).catch(function (error) {
                         //window.alert("Error sending message: " + error);
                     });
                 }
             };
-
-            liff.closeWindow();
         });
 
         document.getElementById('clear').addEventListener('click', function () {
