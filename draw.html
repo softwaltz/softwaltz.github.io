@@ -74,13 +74,14 @@
                         originalContentUrl: rep.data.link,
                         previewImageUrl: rep.data.link
                     }]).then(function () {
-                        window.alert("Message sent");
+                        //window.alert("Message sent");
                     }).catch(function (error) {
-                        window.alert("Error sending message: " + error);
+                        //window.alert("Error sending message: " + error);
                     });
                 }
             };
 
+            liff.closeWindow();
         });
 
         document.getElementById('clear').addEventListener('click', function () {
