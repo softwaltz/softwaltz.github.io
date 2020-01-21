@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw Pic</title>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <style>
+        .draw-pad {
+            display: block;
+        }        
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <canvas id="draw-pad" class="signature-pad"></canvas>
+    </div>
+
+    <div>
+        <button id="send">Send JPG</button>
+        <button id="clear">Clear</button>
+    </div>
+    
+    <script>
+        var canvas = document.getElementById('draw-pad');
+        // Adjust canvas coordinate space taking into account pixel ratio,
+        // to make it look crisp on mobile devices.
+        // This also causes canvas to be cleared.
+        function resizeCanvas() {
+            // When zoomed out to less than 100%, for some very strange reason,
+            // some browsers report devicePixelRatio as less than 1
+            // and only part of the canvas is cleared then.
+            /*
+            var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            canvas.getContext("2d").scale(ratio, ratio);
+            */
+            canvas.setAttribute('width', window.innerWidth);
+            canvas.setAttribute('height', window.innerHeight * 0.9);
+        }
+
+        window.onload = function (e) {
+            liff.init(function (data) {
+                initializeApp(data);
+            });
+        };
+        window.onresize = resizeCanvas;
+        resizeCanvas();
+
+        var signaturePad = new SignaturePad(canvas, {
+            backgroundColor: 'rgb(255, 255, 255)' // necessary for saving image as JPEG; can be removed is only saving as PNG or SVG
+        });
+        // sendMessages call
+    
+        document.getElementById('send').addEventListener('click', function () {
+            if (signaturePad.isEmpty()) {
+                return alert("Please provide a signature first.");
+            }
+
+            var data = signaturePad.toDataURL('image/jpeg');
+
+            liff.sendMessages([{
+                type: 'image',
+                originalContentUrl: data,
+                previewImageUrl: data
+            }]).then(function () {
+                window.alert("Message sent");
+            }).catch(function (error) {
+                window.alert("Error sending message: " + error);
+            });
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            signaturePad.clear();
+        });
+
+    </script>
+</body>
+</html>
