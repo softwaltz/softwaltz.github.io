@@ -33,6 +33,10 @@ function initializeApp(data) {
             type: 'sticker',
             packageId: '2',
             stickerId: '144'
+        }, {
+            type: 'image',
+			originalContentUrl: "https://scontent.ftpe8-1.fna.fbcdn.net/v/t1.0-9/p960x960/37202263_2154224581457391_3884739795439583232_o.jpg?_nc_cat=109&_nc_ohc=BR28epASydsAX92lrTD&_nc_ht=scontent.ftpe8-1.fna&_nc_tp=1002&oh=851e966f90f52bdd8ac3d13fbbcead59&oe=5ED082FB",
+			previewImageUrl: "https://scontent.ftpe8-1.fna.fbcdn.net/v/t1.0-9/p960x960/37202263_2154224581457391_3884739795439583232_o.jpg?_nc_cat=109&_nc_ohc=BR28epASydsAX92lrTD&_nc_ht=scontent.ftpe8-1.fna&_nc_tp=1002&oh=851e966f90f52bdd8ac3d13fbbcead59&oe=5ED082FB"
         }]).then(function () {
             // window.alert("Message sent");
             liff.closeWindow();
