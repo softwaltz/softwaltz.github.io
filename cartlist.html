@@ -1,1 +1,21 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>cart_list</title><link href=/static/css/app.6087ab9a28108ea3a3246b3b04460374.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js></script><script type=text/javascript src=/static/js/vendor.19a7efd631c283800eb2.js></script><script type=text/javascript src=/static/js/app.e71069d73ece60747de7.js></script></body></html>
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>cart_list</title><link href=/static/css/app.6087ab9a28108ea3a3246b3b04460374.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js></script><script type=text/javascript src=/static/js/vendor.19a7efd631c283800eb2.js></script><script type=text/javascript src=/static/js/app.e71069d73ece60747de7.js></script><script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+<script>
+window.onload = function() {
+    let myLiffId = "1653887084-Q5ZnqLkE";
+    initializeLiff(myLiffId);
+};
+
+/**
+* Initialize LIFF
+* @param {string} myLiffId The LIFF ID of the selected element
+*/
+function initializeLiff(myLiffId) {
+    liff
+        .init({
+            liffId: myLiffId
+        })
+        .then(() => {
+            // start to use LIFF's api
+		});
+}
+</script></body></html>
